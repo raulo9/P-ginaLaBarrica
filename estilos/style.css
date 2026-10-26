@@ -1,16 +1,16 @@
-/* Esto selecciona absolutamente todo en la página. Le pongo box-sizing: border-box para que, cuando le dé un tamaño a una caja, los bordes o los márgenes internos no la hagan más grande de lo que he especificado. Con margin: 0 y padding: 0 elimino de golpe todos los espacios invisibles que los navegadores te meten por defecto y te descuadran el diseño. */
+/* ==========================================================================
+   1. REGLAS BÁSICAS Y RESETEO
+   ========================================================================== */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* Aquí le pongo scroll-behavior: smooth. Así, cuando alguien haga clic en un enlace del menú que lleva a otra parte de la misma página, la pantalla bajará rodando suavemente en lugar de pegar un salto brusco e instantáneo. */
 html {
     scroll-behavior: smooth;
 }
 
-/* Aquí configuro la base visual del cuerpo de la página. Le doy el color de fondo principal tipo pergamino, el color de las letras oscuro, elijo la fuente que voy a usar y le pongo un tamaño de texto de 16 píxeles con un interlineado un poco más amplio para que se lea cómodamente. Además, uso display: flex, flex-direction: column y min-height: 100vh para convertir toda la página en una columna gigante que siempre mida, como mínimo, el 100% de la altura de la pantalla (esto es lo que me permite empujar el pie de página hasta abajo del todo luego). */
 body {
     background-color: #f5eedf; 
     color: #231c18; 
@@ -22,19 +22,16 @@ body {
     min-height: 100vh;
 }
 
-/* A todos los enlaces de la web les quito la típica rayita fea de subrayado, hago que cojan automáticamente el color del texto que tengan alrededor y les meto una transición para que cuando cambien de color al pasar el ratón, lo hagan de forma suave en un cuarto de segundo, no de golpe. */
 a {
     text-decoration: none;
     color: inherit;
     transition: 0.25s ease;
 }
 
-/* A todos los títulos principales y secundarios les aplico una fuente distinta, 'Playfair Display', que tiene serifas (los adornos en las letras) para darle un toque clásico de vinoteca o taberna. */
 h1, h2, h3 {
     font-family: 'Playfair Display', serif;
 }
 
-/* Es el estilo que le pongo a los títulos de cada bloque. Centro el texto, lo hago grandote, lo pinto de marrón madera oscura y le dejo 45 píxeles de espacio por debajo para que no se pegue al texto de abajo. Le pongo position: relative porque lo necesito para colocarle la rayita dorada justo debajo. */
 .titulo-seccion {
     text-align: center;
     font-size: 2.3rem;
@@ -43,7 +40,6 @@ h1, h2, h3 {
     position: relative;
 }
 
-/* Esto me crea un elemento "fantasma" justo después de cada título de sección para hacer la rayita dorada que simula el aro de un barril. Le digo que no tenga texto, que actúe como un bloque normal, le doy 80 píxeles de ancho y 4 de alto, lo pinto de oro viejo, lo centro en medio de la pantalla dándole márgenes automáticos a los lados y le redondeo un poquito las puntas. */
 .titulo-seccion::after {
     content: "";
     display: block;
@@ -54,12 +50,10 @@ h1, h2, h3 {
     border-radius: 2px;
 }
 
-/* Para que las distintas partes de la web no estén apretujadas, le digo que cualquier bloque o sección tenga un relleno interno de 70 píxeles por arriba y por abajo, y 20 por los lados. */
 section {
     padding: 70px 20px;
 }
 
-/* A las secciones claras solo les fuerzo el mismo color de fondo del body. A las suaves les pongo un fondo crema un poquito más oscuro y les dibujo una línea muy fina y semitransparente por arriba y por abajo para separarlas visualmente del resto de la web. */
 .seccion-clara {
     background-color: #f5eedf;
 }
@@ -70,7 +64,9 @@ section {
     border-bottom: 1px solid rgba(184, 134, 11, 0.25);
 }
 
-/* La barra superior de la web. La pinto de color madera, le pongo una línea dorada gorda por debajo y le doy algo de espacio por dentro. Uso display: flex y justify-content: space-between para empujar el logo totalmente hacia la izquierda y el menú hacia la derecha, centrándolos verticalmente. La magia aquí es position: sticky y top: 0: esto hace que cuando hagas scroll hacia abajo, la barra se quede pegada al techo de la pantalla. El z-index: 1000 asegura que flote por encima de cualquier otra foto, y el box-shadow le dibuja una sombra negra por debajo para dar sensación de profundidad. */
+/* ==========================================================================
+   2. CABECERA Y LOGO
+   ========================================================================== */
 header {
     background-color: #2a170e;
     border-bottom: 3px solid #b8860b;
@@ -84,7 +80,6 @@ header {
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
 }
 
-/* Meto la imagen y el nombre del bar en una caja flexible y los separo 12 píxeles. A la foto del logo le obligo a medir 48 píxeles de alto, ajustar su ancho automáticamente, le digo que no se achate ni se deforme y le redondeo un poco las esquinas. */
 header .logo {
     display: flex;
     align-items: center;
@@ -98,7 +93,6 @@ header .logo {
     border-radius: 4px;
 }
 
-/* Pinto "La Barrica" del logo de dorado brillante, le doy un tamaño mediano, separo un pelín cada letra para que quede elegante y lo obligo a estar todo en mayúsculas. */
 header .logo h2 {
     color: #dfaa4a; 
     font-size: 1.6rem;
@@ -106,7 +100,6 @@ header .logo h2 {
     text-transform: uppercase;
 }
 
-/* Convierto el contenedor del menú en una caja flexible para centrar las opciones y dejarlas a 20 píxeles de distancia. A las letras (a) las pongo en color blanco roto, en negrita, un poquito más pequeñas de lo normal y todo en mayúsculas. Con nav a:hover indico que cuando pase el ratón por encima, cambien a color dorado. */
 nav {
     display: flex;
     align-items: center;
@@ -124,7 +117,6 @@ nav a:hover {
     color: #dfaa4a;
 }
 
-/* A esta opción concreta del menú le pongo un fondo rojo vino y un borde dorado fino. Fuerzo el texto a ser blanco roto ignorando otras reglas (!important), le pongo relleno interno para hacerlo gordito y redondeo los bordes. Cuando pasas el ratón (hover), oscurezco el fondo y uso transform para moverlo dos píxeles hacia arriba, dando el efecto visual de que el botón da un saltito. */
 .btn-menu {
     background-color: #74111d; 
     color: #fff9f0 !important;
@@ -139,7 +131,9 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-/* Es el bloque de la portada. Le doy position: relative para poder meter fotos sueltas dentro, le obligo a ocupar como mínimo el 60% de la altura de la pantalla, uso flexbox para centrar su contenido en el mismísimo medio tanto vertical como horizontalmente, y le pongo una raya dorada inferior. Aquí está la clave para que no te queden huecos: con flex-grow: 1 le ordeno a esta sección que se estire y se trague todo el espacio vacío de la pantalla si hay hueco de sobra. Por último, le corto lo que sobre por los lados con overflow: hidden. */
+/* ==========================================================================
+   3. HERO (PORTADA PRINCIPAL CON FOTO DE FONDO Y LOGO)
+   ========================================================================== */
 .hero {
     position: relative; 
     min-height: 60vh; 
@@ -152,7 +146,7 @@ nav a:hover {
     flex-grow: 1; 
 }
 
-/* Cojo la foto de la terraza y la pongo en posición absoluta para que flote al fondo, ocupando el 100% del ancho y alto, usando object-fit: cover para que rellene todo sin deformarse. Justo encima, también en posición absoluta, creo un rectángulo negro con un 65% de opacidad que oscurece la foto original para que las letras blancas se puedan leer. Todo esto lo controlo con el z-index (el 1 para la foto, el 2 para la oscuridad, el 3 para el texto). */
+/* Foto de fondo rellenando todo sin deformarse (cover) */
 .hero-bg {
     position: absolute; 
     top: 0;
@@ -161,43 +155,38 @@ nav a:hover {
     height: 100%;
     object-fit: cover; 
     z-index: 1; 
+    /* EL TRUCO: Desenfoque fuerte para tapar los píxeles y el texto del fondo */
+    filter: blur(8px);
+    transform: scale(1.05); /* Hace un pequeño zoom para que el desenfoque no deje bordes blancos */
 }
 
+/* Filtro oscuro para que el logo blanco destaque */
 .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(20, 10, 5, 0.65); 
+    background-color: rgba(20, 10, 5, 0.75); /* Lo he oscurecido un 10% más */
     z-index: 2; 
 }
 
-/* Es el recuadro que agrupa el título de "La Barrica" en la portada. Le pongo un fondo oscuro casi opaco, relleno interno, esquinas redondeadas, un borde dorado y una sombra fuerte para que resalte. Le limito el ancho a 600 píxeles para que no se estire demasiado. Los textos que van dentro (el h1 y la p) simplemente los pongo grandes, en dorado el primero y en blanco el segundo. */
-.hero-content {
+/* El logo transparente que sustituye al recuadro de texto en la portada */
+.hero-logo {
     position: relative;
-    z-index: 3; 
-    background-color: rgba(35, 20, 13, 0.9);
-    padding: 35px 50px;
-    border-radius: 8px;
-    border: 2px solid #b8860b;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-    max-width: 600px;
-    margin: 20px;
+    z-index: 3; /* Para que esté por encima de la capa oscura */
+    width: 450px; /* Tamaño ideal en ordenadores */
+    max-width: 85%; /* En móviles no ocupará más del 85% del ancho */
+    height: auto; /* Mantiene la proporción sin aplastar la imagen */
+    
+    /* En lugar de una sombra cuadrada (box-shadow), usamos drop-shadow 
+       para que la sombra bordee exactamente la forma de las letras y la barrica */
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.8));
 }
 
-.hero-content h1 {
-    font-size: 3.2rem;
-    color: #dfaa4a;
-    margin-bottom: 6px;
-}
-
-.hero-content p {
-    font-size: 1.25rem;
-    color: #fff9f0;
-}
-
-/* Para organizar las tarjetas donde explico cómo es la taberna, creo una cuadrícula automática. Esto hace que las tarjetas se coloquen en fila si caben, pero si la pantalla es estrecha, saltan a la línea de abajo automáticamente sin bajar nunca de los 280 píxeles de ancho. Las separo 25 píxeles, limito el ancho total a 1100 píxeles y lo centro todo con márgenes automáticos. */
+/* ==========================================================================
+   4. SECCIÓN NOSOTROS
+   ========================================================================== */
 .nosotros-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -206,7 +195,6 @@ nav a:hover {
     margin: 0 auto; 
 }
 
-/* Les pongo fondo blanco puro a cada tarjeta de Nosotros, relleno interno para que respiren, esquinas redondeadas y un toque estético: una línea gorda oscura en el lateral izquierdo y una línea dorada fina en la parte de arriba. Le añado una sombra suavísima. Al texto de dentro (títulos y párrafos) le pongo color vino y gris cálido respectivamente. */
 .nosotros-item {
     background-color: #ffffff;
     padding: 30px 22px;
@@ -227,7 +215,9 @@ nav a:hover {
     font-size: 0.95rem;
 }
 
-/* Uso el mismo truco de la cuadrícula adaptativa para colocar las fotos. A cada imagen la fuerzo a que ocupe todo su hueco al 100%, con una altura fija de 240 píxeles y recorta lo que sobra sin deformar la foto. Les pongo un borde blanco sólido y un contorno exterior dorado. Además, les pongo una transición para que al pasar el cursor, la foto se amplíe ligeramente y el contorno exterior se ponga de color rojo vino. */
+/* ==========================================================================
+   5. SECCIÓN GALERÍA
+   ========================================================================== */
 .galeria-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -252,7 +242,9 @@ nav a:hover {
     outline-color: #74111d; 
 }
 
-/* Hago una caja grande horizontal limitando su ancho a 850 píxeles. Uso display: flex para que la foto quede a la izquierda y el texto a la derecha. Le pongo fondo oscuro, bordes dorados, redondeo las esquinas y meto overflow: hidden para que la foto no se salga por las esquinas. A la foto le asigno un 45% del ancho y al texto el 55% restante. */
+/* ==========================================================================
+   6. SECCIÓN EVENTOS
+   ========================================================================== */
 .evento-card {
     display: flex; 
     background-color: #2a170e;
@@ -281,7 +273,6 @@ nav a:hover {
     margin-bottom: 14px;
 }
 
-/* Le quito los puntos feos por defecto a la lista. Luego cojo cada línea de la lista, le doy un color crema claro, un poco de relleno por la izquierda, y uso un pseudo-elemento (::before) para inyectar un icono de una copa de vino ("🍷") colocado de forma absoluta en el lado izquierdo. Así simulo mis propias viñetas personalizadas. */
 .evento-info ul {
     list-style: none; 
 }
@@ -301,7 +292,9 @@ nav a:hover {
     font-size: 0.8rem;
 }
 
-/* Otra cuadrícula automática para colocar los seis botones. A cada botón lo pongo a funcionar con Flexbox para centrar el texto dentro, le pongo un fondo que es un degradado oscuro que va de esquina a esquina. Les pongo color dorado a las letras, borde, y una sombrita. Con hover hago que al tocarlos con el ratón se vuelvan de color rojo vino intenso, las letras blancas y suban hacia arriba dos píxeles. */
+/* ==========================================================================
+   7. SECCIÓN MENÚ Y CARTAS
+   ========================================================================== */
 .menu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -332,7 +325,9 @@ nav a:hover {
     transform: translateY(-2px); 
 }
 
-/* Para la franja horizontal uso flex-wrap para que, si no caben las etiquetas en una línea, pasen abajo sin romperse. Las "píldoras" son simples textos a los que les pongo fondo blanco, mucho relleno por los lados y un borde redondeado altísimo para que queden con forma de cápsula o pastilla, con un borde dorado muy difuminado y sombra sutil. */
+/* ==========================================================================
+   8. CINTA DE SERVICIOS Y PAGOS
+   ========================================================================== */
 .cinta-detalles {
     padding: 24px 20px;
     background-color: #dfd2be;
@@ -370,7 +365,6 @@ nav a:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* Vuelvo a usar el mismo sistema de rejilla adaptable para separar el mapa, el horario y el formulario. La diferencia aquí es que uso align-items: start para que las columnas no se estiren forzosamente hacia abajo si una de ellas es más corta que las otras. Todo lo de dentro (títulos, párrafos, enlaces) lleva colores de la paleta de la web, y a los enlaces les digo que se subrayen cuando les paso el ratón por encima. */
 .contacto-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -388,7 +382,7 @@ nav a:hover {
 
 .contacto-columna p {
     margin-bottom: 12px;
-    color: black; 
+    color: #5c4e46; 
 }
 
 .contacto-columna a {
@@ -400,7 +394,6 @@ nav a:hover {
     text-decoration: underline;
 }
 
-/* Lo convierto en un bloque pequeño, con fondo dorado y texto oscuro en mayúsculas, quitándole el subrayado. Al pasar el cursor, invierto los colores a fondo oscuro y texto blanco roto. */
 .btn-mapa {
     display: inline-block;
     background-color: #dfaa4a;
@@ -420,22 +413,20 @@ nav a:hover {
     color: #ffffff !important;
 }
 
-/* Hago un recuadro con fondo pergamino y borde dorado para encerrar las horas. Cada línea (lunes a sábado, domingos) la pongo como flexbox para empujar el día a la izquierda y las horas totalmente a la derecha. Le pongo una raya muy fina por debajo a cada fila para separarlas, pero se la quito a la última para que no quede colgando feo. Resalto los días cerrados en un rojo suave y los días abiertos en ocre oscuro. */
 .tarjeta-horario {
-    background-color: #f5eedf; 
-    border: 2px solid #b8860b; 
+    background-color: #1a0f09;
+    border: 2px solid #b8860b;
     border-radius: 8px;
     padding: 25px; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); 
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15), inset 0 0 10px rgba(0, 0, 0, 0.6); 
 }
 
 .horario-detalle .fila-horario {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     padding: 10px 0;
-    border-bottom: 1px solid rgba(42, 23, 14, 0.2); 
-    color: #2a170e; 
-    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
+    color: #fff9f0;
 }
 
 .horario-detalle .fila-horario:last-child {
@@ -443,14 +434,13 @@ nav a:hover {
 }
 
 .horario-detalle .fila-horario strong {
-    color: #b8860b; 
+    color: #dfaa4a;
 }
 
 .horario-detalle .fila-horario.cerrado strong {
-    color: #c45b5b; 
+    color: #df7070; 
 }
 
-/* Organizo el formulario como una columna flexible dejando 12 píxeles de hueco entre campos. A los recuadros donde se escribe les pongo fondo blanco, bordes color arena y un tipo de letra normal. Cuando el usuario pincha encima de uno para escribir, le quito el borde azul feo que viene por defecto y se lo cambio por uno dorado nuestro. Al botón de "Enviar Mensaje" le aplico los colores corporativos, letras mayúsculas y negrita. */
 form {
     display: flex;
     flex-direction: column; 
@@ -489,10 +479,9 @@ input:focus, textarea:focus {
     background-color: #540c14;
 }
 
-/* La caja oscura del fondo del todo con el copyright. Le pongo fondo de madera, centro el texto y dibujo una raya gorda dorada por encima. La regla crucial aquí es margin-top: auto. Como el body es un contenedor flexible, esta regla le dice al pie de página: "empuja todo el espacio sobrante hacia arriba y quédate tú en el límite inferior de la pantalla". */
 footer {
     background-color: #2a170e; 
-    text-align: center;
+    text-align: center; 
     border-top: 4px solid #b8860b; 
     padding: 25px 20px;
     margin-top: auto; 
@@ -504,9 +493,7 @@ footer p {
     letter-spacing: 0.5px;
 }
 
-/* Todo lo que está dentro de este bloque solo se aplica si la pantalla mide 768 píxeles o menos de ancho (un teléfono móvil o una tablet estrecha). Ahí modifico la cabecera para que el logo y el menú ya no estén uno a cada lado, sino apilados en columna. Al menú le permito partirse en varias líneas para que los enlaces no se salgan por los lados. Achico el título gigante de la portada a un tamaño razonable. En la tarjeta horizontal del evento, apilo el contenido en columna para que la foto se ponga arriba ocupando el 100% del ancho y la fuerzo a ser más bajita. Por último, centro todo el contenido de la cinta de servicios para que quede bien alineado. */
 @media (max-width: 768px) {
-    
     header {
         flex-direction: column;
         padding: 16px;
@@ -518,9 +505,10 @@ footer p {
         justify-content: center;
         gap: 12px;
     }
-
-    .hero-content h1 {
-        font-size: 2.4rem;
+    
+    /* Adaptamos el tamaño del logo para móviles */
+    .hero-logo {
+        width: 320px;
     }
 
     .evento-card {
