@@ -3,15 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- El texto que aparece en la pestañita del navegador -->
     <title>La Barrica - Inicio | Vinoteca Taberna</title>
+    
+    <!-- Importa las fuentes chulas desde los servidores de Google -->
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilos/style.css">
 </head>
 <body>
-    <header>
+   <header>
+        <!-- Agrupa la foto del logo -->
         <div class="logo">
             <img src="img/logo_logo.png" alt="Logo La Barrica" class="logo-img">
         </div>
+        
+        <!-- checkbox para uso en el móvil -->
+        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+        <label for="menu-toggle" class="menu-btn">☰</label>
+        
+        <!-- Zona de navegación -->
         <nav>
             <a href="index.html">Inicio</a>
             <a href="nosotros.html">Nosotros</a>
@@ -21,17 +32,15 @@
             <a href="contacto.html">Contacto y Horario</a>
         </nav>
     </header>
-
-<!-- SECCIÓN PRINCIPAL (HERO) -->
     <section id="inicio" class="hero">
         <img src="img/terracita.jpg" alt="Fachada de La Barrica" class="hero-bg">
         <div class="hero-overlay"></div>
-        
-        <!-- Tu logo sin fondo centrado directamente sobre la imagen -->
         <img src="img/logosinfondo.png" alt="La Barrica" class="hero-logo">
     </section>
 
+     <!-- Pie de página -->
     <footer>
+        <!-- El símbolo &copy; pinta automáticamente el iconito del Copyright © -->
         <p>&copy; 2026 La Barrica. Todos los derechos reservados.</p>
     </footer>
 </body>

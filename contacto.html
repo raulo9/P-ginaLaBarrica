@@ -9,9 +9,16 @@
 </head>
 <body>
     <header>
+        <!-- Agrupa la foto del logo -->
         <div class="logo">
-        <img src="img/logo_logo.png" alt="Logo La Barrica" class="logo-img">
+            <img src="img/logo_logo.png" alt="Logo La Barrica" class="logo-img">
         </div>
+        
+        <!-- checkbox para uso en el móvil -->
+        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+        <label for="menu-toggle" class="menu-btn">☰</label>
+        
+        <!-- Zona de navegación -->
         <nav>
             <a href="index.html">Inicio</a>
             <a href="nosotros.html">Nosotros</a>
@@ -45,9 +52,13 @@
             <div class="contacto-columna">
                 <h3>Dónde Estamos</h3>
                 <p>📍 Calle Venus 11, 28925 Alcorcón, España</p>
+
+                <!--Mapita de google maps--> 
                 <div class="mapa-contenedor">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3040.686523912613!2d-3.812061923485098!3d40.3526139714472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd41893ead0f54ff%3A0xb4e6e99bab277fe4!2sVinoteca%20La%20Barrica%20Taperia!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses" width="100%" height="180" style="border:0; border-radius: 6px; margin: 10px 0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
+
+                <!--Botón de como llegar--> 
                 <p><a href="https://www.google.com/maps/dir//Vinoteca+La+Barrica+Taperia,+C.+Venus,+11,+28925+Alcorc%C3%B3n,+Madrid/@40.3583479,-3.8146536,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0xd41893ead0f54ff:0xb4e6e99bab277fe4!2m2!1d-3.809487!2d40.3528405?entry=ttu&g_ep=EgoyMDI2MTAxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-mapa">🧭 Cómo llegar (Google Maps)</a></p>
                 <br>
                 <p>📞 <a href="tel:+34910237005">+34 910 23 70 05</a></p>
@@ -70,16 +81,26 @@
                 </div>
             </div>
 
-            <div class="contacto-columna">
-                <h3>Escríbenos</h3>
-                <form action="#" method="POST">
-                    <input type="text" placeholder="Su nombre" required>
-                    <input type="email" placeholder="Su correo electrónico" required>
-                    <input type="tel" placeholder="Su teléfono">
-                    <textarea rows="3" placeholder="Mensaje o consulta" required></textarea>
-                    <button type="submit" class="btn-enviar">Enviar Mensaje</button>
-                </form>
-            </div>
+           <div class="contacto-columna">
+        <h3>Escríbenos</h3>
+        
+        <!-- method="POST" envía los datos de forma oculta en la petición HTTP -->
+        <form action="#" method="POST">
+            <!-- required es validación nativa de HTML5: no deja enviar si está vacío -->
+            <input type="text" placeholder="Su nombre" required>
+            
+            <!-- type="email" valida automáticamente que el texto contenga un '@' -->
+            <input type="email" placeholder="Su correo electrónico" required>
+            
+            <!-- type="tel" despliega el teclado numérico en los smartphones -->
+            <input type="tel" placeholder="Su teléfono">
+            
+            <textarea rows="3" placeholder="Mensaje o consulta" required></textarea>
+            
+            <!-- type="submit" dispara el envío del formulario -->
+            <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+        </form>
+    </div>
         </div>
     </section>
 

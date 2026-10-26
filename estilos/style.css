@@ -1,16 +1,16 @@
-/* ==========================================================================
-   1. REGLAS BÁSICAS Y RESETEO
-   ========================================================================== */
+/* Resetea los bordes y márgenes que traen los navegadores por defecto. */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+/* Hace que la web baje deslizándose suave al pinchar un enlace. */
 html {
     scroll-behavior: smooth;
 }
 
+/* Fondo, tipo de letra general y truco para que el pie de página siempre se pegue abajo. */
 body {
     background-color: #f5eedf; 
     color: #231c18; 
@@ -22,16 +22,19 @@ body {
     min-height: 100vh;
 }
 
+/* Quita el subrayado a los enlaces y les da una animación suave al pasar el ratón. */
 a {
     text-decoration: none;
     color: inherit;
     transition: 0.25s ease;
 }
 
+/* Aplica una fuente más elegante a todos los títulos. */
 h1, h2, h3 {
     font-family: 'Playfair Display', serif;
 }
 
+/* Centra los títulos principales de cada bloque y les da color madera. */
 .titulo-seccion {
     text-align: center;
     font-size: 2.3rem;
@@ -40,6 +43,7 @@ h1, h2, h3 {
     position: relative;
 }
 
+/* Dibuja la rayita dorada que hay debajo de cada título. */
 .titulo-seccion::after {
     content: "";
     display: block;
@@ -50,23 +54,24 @@ h1, h2, h3 {
     border-radius: 2px;
 }
 
+/* Da espacio por arriba, abajo y los lados a cada bloque grande de la web. */
 section {
     padding: 70px 20px;
 }
 
+/* Pinta el fondo de color pergamino claro. */
 .seccion-clara {
     background-color: #f5eedf;
 }
 
+/* Pinta el fondo más tostado y pone dos líneas finas para separar bloques. */
 .seccion-suave {
     background-color: #ebe0cf;
     border-top: 1px solid rgba(184, 134, 11, 0.25);
     border-bottom: 1px solid rgba(184, 134, 11, 0.25);
 }
 
-/* ==========================================================================
-   2. CABECERA Y LOGO
-   ========================================================================== */
+/* Barra superior: fondo oscuro, pegada al techo y con sombra. */
 header {
     background-color: #2a170e;
     border-bottom: 3px solid #b8860b;
@@ -80,12 +85,14 @@ header {
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
 }
 
+/* Coloca la fotito y el texto del logo uno al lado del otro. */
 header .logo {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
+/* Fija el tamaño de la foto del logo en la barra. */
 .logo-img {
     height: 48px;
     width: auto;
@@ -93,6 +100,7 @@ header .logo {
     border-radius: 4px;
 }
 
+/* Pone el título de la barra en mayúsculas y dorado. */
 header .logo h2 {
     color: #dfaa4a; 
     font-size: 1.6rem;
@@ -100,12 +108,20 @@ header .logo h2 {
     text-transform: uppercase;
 }
 
+/* Escondemos el checkbox invisible y el botón ☰ en pantallas grandes */
+.menu-checkbox,
+.menu-btn {
+    display: none;
+}
+
+/* Pone los botones del menú en fila india (en PC). */
 nav {
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
+/* Pone las letras del menú en blanco y mayúsculas. */
 nav a {
     color: #fff9f0;
     font-weight: 600;
@@ -113,10 +129,12 @@ nav a {
     text-transform: uppercase;
 }
 
+/* Pone las letras del menú doradas al tocarlas con el ratón. */
 nav a:hover {
     color: #dfaa4a;
 }
 
+/* Convierte el enlace de "Nuestro Menú" en un botón rojo destacado. */
 .btn-menu {
     background-color: #74111d; 
     color: #fff9f0 !important;
@@ -126,14 +144,13 @@ nav a:hover {
     font-weight: 700;
 }
 
+/* Oscurece el botón rojo y lo hace dar un saltito al pasar el ratón. */
 .btn-menu:hover {
     background-color: #540c14;
     transform: translateY(-2px);
 }
 
-/* ==========================================================================
-   3. HERO (PORTADA PRINCIPAL CON FOTO DE FONDO Y LOGO)
-   ========================================================================== */
+/* Caja de la portada principal: ocupa más de media pantalla y centra lo de dentro. */
 .hero {
     position: relative; 
     min-height: 60vh; 
@@ -146,7 +163,7 @@ nav a:hover {
     flex-grow: 1; 
 }
 
-/* Foto de fondo rellenando todo sin deformarse (cover) */
+/* Foto gigante de fondo, estirada y borrosa para que no se vean los píxeles. */
 .hero-bg {
     position: absolute; 
     top: 0;
@@ -155,38 +172,32 @@ nav a:hover {
     height: 100%;
     object-fit: cover; 
     z-index: 1; 
-    /* EL TRUCO: Desenfoque fuerte para tapar los píxeles y el texto del fondo */
     filter: blur(8px);
-    transform: scale(1.05); /* Hace un pequeño zoom para que el desenfoque no deje bordes blancos */
+    transform: scale(1.05); 
 }
 
-/* Filtro oscuro para que el logo blanco destaque */
+/* Capa de cristal negro semitransparente para oscurecer la foto de fondo. */
 .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(20, 10, 5, 0.75); /* Lo he oscurecido un 10% más */
+    background-color: rgba(20, 10, 5, 0.75); 
     z-index: 2; 
 }
 
-/* El logo transparente que sustituye al recuadro de texto en la portada */
+/* Logo gigante de la portada con sombra que sigue la forma de las letras. */
 .hero-logo {
     position: relative;
-    z-index: 3; /* Para que esté por encima de la capa oscura */
-    width: 450px; /* Tamaño ideal en ordenadores */
-    max-width: 85%; /* En móviles no ocupará más del 85% del ancho */
-    height: auto; /* Mantiene la proporción sin aplastar la imagen */
-    
-    /* En lugar de una sombra cuadrada (box-shadow), usamos drop-shadow 
-       para que la sombra bordee exactamente la forma de las letras y la barrica */
+    z-index: 3; 
+    width: 450px; 
+    max-width: 85%; 
+    height: auto; 
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.8));
 }
 
-/* ==========================================================================
-   4. SECCIÓN NOSOTROS
-   ========================================================================== */
+/* Cuadrícula automática: pone las tarjetas en columnas y las baja si no caben. */
 .nosotros-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -195,6 +206,7 @@ nav a:hover {
     margin: 0 auto; 
 }
 
+/* Diseño de la tarjeta blanca: fondo, sombra y borde lateral gordo. */
 .nosotros-item {
     background-color: #ffffff;
     padding: 30px 22px;
@@ -204,20 +216,20 @@ nav a:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
 }
 
+/* Título rojo dentro de la tarjeta blanca. */
 .nosotros-item h3 {
     color: #74111d; 
     font-size: 1.4rem;
     margin-bottom: 10px;
 }
 
+/* Texto gris normal dentro de la tarjeta. */
 .nosotros-item p {
     color: #5c4e46; 
     font-size: 0.95rem;
 }
 
-/* ==========================================================================
-   5. SECCIÓN GALERÍA
-   ========================================================================== */
+/* Cuadrícula para colocar las fotos de la galería. */
 .galeria-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -226,6 +238,7 @@ nav a:hover {
     margin: 0 auto;
 }
 
+/* Fija todas las fotos a la misma altura, recorta sobrantes y les pone doble marco. */
 .galeria-grid img {
     width: 100%; 
     height: 240px; 
@@ -237,14 +250,13 @@ nav a:hover {
     transition: transform 0.25s ease, outline-color 0.25s ease;
 }
 
+/* Hace un poco de zoom y pone el marco exterior rojo al pasar el ratón. */
 .galeria-grid img:hover {
     transform: scale(1.02); 
     outline-color: #74111d; 
 }
 
-/* ==========================================================================
-   6. SECCIÓN EVENTOS
-   ========================================================================== */
+/* Caja horizontal oscura para anunciar eventos. */
 .evento-card {
     display: flex; 
     background-color: #2a170e;
@@ -257,26 +269,31 @@ nav a:hover {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
+/* La foto del evento, ocupando casi la mitad de la caja. */
 .evento-card img {
     width: 45%; 
     object-fit: cover;
 }
 
+/* La zona del texto del evento, ocupando el resto. */
 .evento-info {
     padding: 30px;
     width: 55%; 
 }
 
+/* Título dorado del evento. */
 .evento-info h3 {
     color: #dfaa4a;
     font-size: 1.6rem;
     margin-bottom: 14px;
 }
 
+/* Quita los puntos negros redondos de la lista. */
 .evento-info ul {
     list-style: none; 
 }
 
+/* Da un hueco a la izquierda de cada línea para encajar nuestro propio icono. */
 .evento-info ul li {
     padding: 6px 0;
     color: #e3d5c8;
@@ -284,6 +301,7 @@ nav a:hover {
     padding-left: 20px; 
 }
 
+/* Clava el emoji de la copa de vino como si fuera la viñeta de la lista. */
 .evento-info ul li::before {
     content: "🍷"; 
     position: absolute;
@@ -292,9 +310,7 @@ nav a:hover {
     font-size: 0.8rem;
 }
 
-/* ==========================================================================
-   7. SECCIÓN MENÚ Y CARTAS
-   ========================================================================== */
+/* Cuadrícula para los botones gigantes de descargar cartas. */
 .menu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -303,6 +319,7 @@ nav a:hover {
     margin: 0 auto;
 }
 
+/* Diseño del botón PDF: color fondo oscuro, texto dorado y centrado. */
 .btn-carta {
     display: flex;
     justify-content: center;
@@ -318,6 +335,7 @@ nav a:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
 }
 
+/* El botón se pone rojo vino y sube un poquito al pasar el ratón. */
 .btn-carta:hover {
     background: #74111d;
     color: #fff9f0;
@@ -325,21 +343,19 @@ nav a:hover {
     transform: translateY(-2px); 
 }
 
-/* ==========================================================================
-   8. CINTA DE SERVICIOS Y PAGOS
-   ========================================================================== */
+/* Franja arena de los servicios. Si no caben las cosas, saltan abajo solos. */
 .cinta-detalles {
     padding: 24px 20px;
     background-color: #dfd2be;
     border-top: 1px solid #c8b69e;
     border-bottom: 1px solid #c8b69e;
-    
     display: flex;
     flex-wrap: wrap; 
     justify-content: center;
     gap: 30px;
 }
 
+/* Agrupa las pastillitas blancas para que no se separen por ahí solas. */
 .cinta-grupo {
     display: flex;
     align-items: center;
@@ -347,6 +363,7 @@ nav a:hover {
     gap: 10px;
 }
 
+/* La palabra "Servicios:" en mayúsculas y negrita. */
 .cinta-titulo {
     font-weight: 700;
     color: #2a170e;
@@ -354,6 +371,7 @@ nav a:hover {
     text-transform: uppercase;
 }
 
+/* Las cajitas blancas súper redondas tipo pastilla. */
 .pildora {
     background-color: #ffffff;
     color: #231c18;
@@ -365,6 +383,7 @@ nav a:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
+/* Divide la zona de abajo en tres columnas que no se deforman entre sí. */
 .contacto-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -374,26 +393,31 @@ nav a:hover {
     align-items: start; 
 }
 
+/* Títulos de las tres columnas de abajo. */
 .contacto-columna h3 {
     color: #2a170e; 
     font-size: 1.4rem;
     margin-bottom: 20px;
 }
 
+/* Textos de la dirección. */
 .contacto-columna p {
     margin-bottom: 12px;
     color: #5c4e46; 
 }
 
+/* Enlaces (teléfono y email). */
 .contacto-columna a {
     color: #74111d; 
     font-weight: 600;
 }
 
+/* Subraya el enlace al posar el ratón. */
 .contacto-columna a:hover {
     text-decoration: underline;
 }
 
+/* Convierte el enlace de Google Maps en un botoncito dorado. */
 .btn-mapa {
     display: inline-block;
     background-color: #dfaa4a;
@@ -408,11 +432,13 @@ nav a:hover {
     margin-top: 5px;
 }
 
+/* Oscurece el botón de Google Maps. */
 .btn-mapa:hover {
     background-color: #b8860b;
     color: #ffffff !important;
 }
 
+/* Crea la caja negra tipo pizarra de bar para poner las horas. */
 .tarjeta-horario {
     background-color: #1a0f09;
     border: 2px solid #b8860b;
@@ -421,6 +447,7 @@ nav a:hover {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15), inset 0 0 10px rgba(0, 0, 0, 0.6); 
 }
 
+/* Cada fila del horario. */
 .horario-detalle .fila-horario {
     display: flex;
     justify-content: space-between; 
@@ -429,24 +456,29 @@ nav a:hover {
     color: #fff9f0;
 }
 
+/* Quita la raya sobrante del último día. */
 .horario-detalle .fila-horario:last-child {
     border-bottom: none; 
 }
 
+/* Las horas sueltas se pintan en dorado. */
 .horario-detalle .fila-horario strong {
     color: #dfaa4a;
 }
 
+/* El texto de los días que cierran se pinta en rojo. */
 .horario-detalle .fila-horario.cerrado strong {
     color: #df7070; 
 }
 
+/* Apila las cajas del formulario en una columna hacia abajo. */
 form {
     display: flex;
     flex-direction: column; 
     gap: 12px; 
 }
 
+/* Cajas blancas donde el usuario escribe el mensaje. */
 input, textarea {
     background-color: #ffffff; 
     color: #231c18;
@@ -457,11 +489,13 @@ input, textarea {
     font-size: 0.95rem;
 }
 
+/* Al pinchar para escribir, el borde se vuelve dorado. */
 input:focus, textarea:focus {
     outline: none; 
     border-color: #b8860b; 
 }
 
+/* Botón rojo para mandar el mensaje. */
 .btn-enviar {
     background-color: #74111d;
     color: #fff9f0;
@@ -475,10 +509,12 @@ input:focus, textarea:focus {
     transition: 0.3s;
 }
 
+/* Oscurece el botón de enviar. */
 .btn-enviar:hover {
     background-color: #540c14;
 }
 
+/* Franja negra final. margin-top: auto lo empuja hasta abajo del todo siempre. */
 footer {
     background-color: #2a170e; 
     text-align: center; 
@@ -487,6 +523,7 @@ footer {
     margin-top: auto; 
 }
 
+/* El texto blanquito pequeño del Copyright. */
 footer p {
     font-size: 0.95rem;
     color: #fff9f0; 
@@ -494,36 +531,78 @@ footer p {
 }
 
 @media (max-width: 768px) {
+    /* Cabecera en móvil: Logo a la izquierda, hamburguesa a la derecha */
     header {
-        flex-direction: column;
-        padding: 16px;
-        gap: 14px;
+        flex-direction: row; 
+        padding: 10px 20px;
+        flex-wrap: wrap; 
+        gap: 0;
     }
 
+    /* Muestra el botón hamburguesa */
+    .menu-btn {
+        display: block; 
+        color: #dfaa4a;
+        font-size: 2rem;
+        cursor: pointer;
+        padding-top: 5px; 
+    }
+
+    /* El menú desplegable oculto por defecto en móviles */
     nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
+        display: none; 
+        width: 100%; 
+        flex-direction: column; 
+        background-color: #2a170e; 
+        padding-top: 15px;
+        padding-bottom: 15px;
+        gap: 15px; 
+        border-top: 1px solid rgba(184, 134, 11, 0.3); 
+        margin-top: 10px;
+    }
+
+    /* Quitamos el fondo rojo al botón de menú para que quede uniforme en la lista */
+    nav .btn-menu {
+        background-color: transparent;
+        color: #fff9f0 !important;
+        border: none;
+        padding: 0;
+        font-weight: 600;
+    }
+
+    nav .btn-menu:hover {
+        background-color: transparent;
+        transform: none;
+        color: #dfaa4a !important;
+    }
+
+    /* Si el checkbox está marcado, muestra el nav que tiene justo debajo */
+    .menu-checkbox:checked ~ nav {
+        display: flex;
     }
     
-    /* Adaptamos el tamaño del logo para móviles */
+    /* Achica el logo de la portada para que no se salga de la pantalla. */
     .hero-logo {
         width: 320px;
     }
 
+    /* La tarjeta de evento pasa de estar horizontal a vertical. */
     .evento-card {
         flex-direction: column;
     }
 
+    /* Foto y texto ocupan todo el ancho de la pantalla. */
     .evento-card img,
     .evento-info {
         width: 100%;
     }
 
+    /* Limita la altura de la foto del evento. */
     .evento-card img {
         height: 200px;
     }
 
+    /* Centra la barra de servicios y pagos. */
     .cinta-detalles {
         flex-direction: column;
         align-items: center;
